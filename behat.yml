@@ -1,0 +1,37 @@
+default:
+  #formatters:
+   #    progress:
+   #    junit: [ci/build/behat/junit]
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  #formatters:
+   #pretty: true
+   #html:
+     #output_path: %paths.base%/build/html
+  extensions:
+    Behat\MinkExtension:
+      goutte:
+        guzzle_parameters:
+            verify: false
+            curl.options:
+                 CURLOPT_SSL_VERIFYPEER: false
+                 CURLOPT_CERTINFO: false
+                 CURLOPT_FOLLOWLOCATION: fals
+                 CURLOPT_TIMEOUT: 120
+            ssl.certificate_authority: false
+      browser_name: chrome
+      selenium2:
+        wd_host: "http://127.0.0.1:4444/wd/hub"
+        capabilities:
+          version: ''
+      javascript_session: selenium2
+      base_url: "http://master-7rqtwti-na2rj6uui4vei.eu.platform.sh"
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: "drupal"
