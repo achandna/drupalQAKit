@@ -31,7 +31,7 @@ default:
         capabilities:
           version: ''
       javascript_session: selenium2
-      base_url: "http://master-7rqtwti-na2rj6uui4vei.eu.platform.sh"
+      base_url: "https://rc547.ply.st"
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: "drupal"
